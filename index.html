@@ -163,6 +163,19 @@
     .gift p{ margin:0 auto; max-width:470px; font-size:15.5px; line-height:1.6; color:var(--ink-soft); }
     .gift p b{ color:var(--ink); font-weight:650; }
 
+    /* limits */
+    .k-info{ color:#5b6480; background:rgba(91,100,128,.09); border:1px solid rgba(91,100,128,.20); }
+    .lim-intro{ margin:0 0 14px; font-size:15.5px; line-height:1.58; color:var(--ink-soft); }
+    .lim-intro b{ color:var(--ink); font-weight:650; }
+    .lim{ list-style:none; margin:0; padding:0; display:grid; gap:9px; }
+    .lim li{ position:relative; padding-left:24px; font-size:15px; line-height:1.5; color:var(--ink-soft); }
+    .lim li::before{ content:""; position:absolute; left:2px; top:7px; width:8px; height:8px; border-radius:50%;
+      background:linear-gradient(135deg,var(--blue),var(--violet)); }
+    .lim li b{ color:var(--ink); font-weight:650; }
+    .note{ margin:16px 0 0; padding:14px 16px; border-radius:14px; font-size:14.5px; line-height:1.6;
+      color:var(--ink-soft); background:#f5f7fd; border:1px solid var(--line); }
+    .note b{ color:var(--ink); font-weight:650; }
+
     .foot{ text-align:center; margin:28px 8px 0; font-size:12.5px; color:var(--faint); line-height:1.7; }
 
     @media (max-width:560px){
@@ -247,6 +260,26 @@
         <h3>Не используйте Яндекс.Браузер</h3>
         <p>В <b>Яндекс.Браузере Gemini не работает</b> (этот браузер принадлежит РФ). Открывайте инструкцию и сам сервис в <b>Google Chrome</b> — также подойдут Safari, Microsoft Edge или Firefox.</p>
       </div>
+    </section>
+
+    <!-- LIMITS -->
+    <section class="card rv">
+      <span class="kicker k-info">ℹ️ О лимитах</span>
+      <h2>Лимиты Google AI PRO</h2>
+      <p class="hint">Чтобы не было недопониманий — коротко о том, как это устроено.</p>
+      <p class="lim-intro">У подписки есть ограничения на количество запросов — <b>дневные</b> и <b>недельные</b>. Они действуют отдельно для разных типов запросов:</p>
+      <ul class="lim">
+        <li><b>Текстовые запросы</b> — обычные сообщения в чате.</li>
+        <li><b>Генерация изображений</b> — свой отдельный лимит.</li>
+        <li><b>Генерация видео</b> — свой лимит, который обновляется каждый день.</li>
+      </ul>
+      <p class="note">Это <b>официальные лимиты Google</b> для подписки Pro. Они <b>одинаковы для всех пользователей</b> и устанавливаются самим Google — <b>от нас они никак не зависят</b>, и наша ссылка активации на них не влияет.</p>
+    </section>
+
+    <!-- SUPPORT (дубль) -->
+    <section class="card support rv">
+      <div class="ic">💬</div>
+      <p><b>Нужна помощь?</b> Если возникнут любые вопросы или что-то не получится — обратитесь в техподдержку, и мы обязательно вам поможем на каждом шаге.</p>
     </section>
 
     <p class="foot rv">Эта страница — помощь от продавца и не является официальным сайтом Google.<br>Google, Gemini и Google AI — товарные знаки Google LLC.</p>
