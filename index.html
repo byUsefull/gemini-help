@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Инструкция Google AI PRO (Gemini)</title>
+  <style>
+    * { box-sizing: border-box; }
+    :root{
+      --g-blue:#4285F4;
+      --g-red:#EA4335;
+      --g-yellow:#FBBC05;
+      --g-green:#34A853;
+      --purple:#9b72cb;
+      --rose:#d96570;
+      --ink:#1a1c22;
+      --muted:#5b6070;
+    }
+    body{
+      margin:0; min-height:100vh;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(1200px 600px at 12% -10%, rgba(66,133,244,.18), transparent 60%),
+        radial-gradient(1000px 620px at 100% 0%, rgba(217,101,112,.16), transparent 55%),
+        radial-gradient(900px 700px at 50% 120%, rgba(155,114,203,.16), transparent 60%),
+        linear-gradient(135deg,#eef3ff,#fbf7ff 55%,#ffffff);
+      display:flex; align-items:flex-start; justify-content:center;
+      padding:32px 20px 56px;
+      -webkit-font-smoothing:antialiased;
+    }
+    .wrap{ width:100%; max-width:760px; }
+
+    /* HERO */
+    .hero{
+      position:relative; overflow:hidden;
+      border-radius:30px;
+      padding:44px 34px 40px;
+      color:#fff; text-align:center;
+      background:linear-gradient(120deg,#4285F4 0%,#7a6bd0 42%,#9b72cb 66%,#d96570 100%);
+      box-shadow:0 26px 70px rgba(80,60,160,.30);
+      border:1px solid rgba(255,255,255,.22);
+    }
+    .hero::before{
+      content:""; position:absolute; inset:-2px;
+      background:
+        radial-gradient(420px 200px at 15% 0%, rgba(255,255,255,.28), transparent 60%),
+        radial-gradient(360px 220px at 90% 20%, rgba(255,255,255,.16), transparent 60%);
+      pointer-events:none;
+    }
+    .spark{ font-size:40px; line-height:1; filter:drop-shadow(0 6px 14px rgba(0,0,0,.18)); }
+
+    /* Google four-color accent dots row (вынесено акцентом) */
+    .gdots{
+      display:flex; justify-content:center; gap:9px;
+      margin:16px 0 6px; position:relative;
+    }
+    .gdots i{
+      width:11px; height:11px; border-radius:50%; display:inline-block;
+      box-shadow:0 3px 8px rgba(0,0,0,.18);
+    }
+    .gdots .d-b{ background:#4285F4; } .gdots .d-r{ background:#EA4335; }
+    .gdots .d-y{ background:#FBBC05; } .gdots .d-g{ background:#34A853; }
+
+    .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      margin:0 0 8px;
+      padding:8px 16px; border-radius:999px;
+      background:rgba(255,255,255,.20);
+      border:1px solid rgba(255,255,255,.42);
+      color:#fff; font-weight:700; font-size:13.5px; letter-spacing:.3px;
+      position:relative;
+    }
+    h1{ margin:6px 0 10px; font-size:34px; line-height:1.18; font-weight:800; position:relative; }
+    .lede{ margin:0 auto; max-width:540px; font-size:17px; line-height:1.6; color:rgba(255,255,255,.94); position:relative; }
+    .cta{
+      display:inline-flex; align-items:center; gap:10px;
+      margin-top:24px; padding:16px 30px;
+      background:#fff; color:#3b2b6b; text-decoration:none;
+      border-radius:16px; font-weight:800; font-size:16.5px;
+      box-shadow:0 14px 30px rgba(20,10,60,.28);
+      position:relative; transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .cta:hover{ transform:translateY(-2px); box-shadow:0 18px 38px rgba(20,10,60,.34); }
+    .cta .g{ font-weight:900; background:linear-gradient(90deg,#4285F4,#9b72cb,#d96570); -webkit-background-clip:text; background-clip:text; color:transparent; }
+
+    /* SUPPORT NOTICE */
+    .support{
+      margin:20px 0 0;
+      background:rgba(255,255,255,.90);
+      border:1px solid rgba(66,133,244,.22);
+      border-left:5px solid var(--g-blue);
+      border-radius:16px;
+      padding:16px 18px;
+      display:flex; gap:12px; align-items:flex-start;
+      box-shadow:0 10px 30px rgba(15,23,42,.06);
+    }
+    .support .ic{ font-size:22px; line-height:1.3; }
+    .support p{ margin:0; font-size:15.5px; line-height:1.55; color:#2b3040; }
+    .support b{ color:#173a86; }
+
+    /* CARD SECTIONS */
+    .card{
+      margin-top:20px;
+      background:rgba(255,255,255,.94);
+      border:1px solid rgba(120,110,180,.16);
+      border-radius:22px;
+      padding:28px 26px;
+      box-shadow:0 16px 44px rgba(30,20,80,.08);
+    }
+    .sec-badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 14px; border-radius:999px;
+      font-weight:700; font-size:13px; letter-spacing:.2px;
+      margin-bottom:14px;
+    }
+    .sb-activate{ background:rgba(52,168,83,.12); color:#1e7d3a; border:1px solid rgba(52,168,83,.28); }
+    .sb-vpn{ background:rgba(66,133,244,.12); color:#1a56c4; border:1px solid rgba(66,133,244,.28); }
+    .card h2{ margin:0 0 6px; font-size:22px; line-height:1.25; color:#20232e; }
+    .card .hint{ margin:0 0 16px; font-size:14.5px; color:var(--muted); }
+
+    /* STEPS as scannable cards + timeline connector */
+    ol.steps{ list-style:none; margin:0; padding:0; counter-reset:step; }
+    ol.steps li{
+      position:relative;
+      padding:14px 16px 14px 60px;
+      margin-bottom:12px;
+      border-radius:14px;
+      background:linear-gradient(180deg,#fbfcff,#f5f7ff);
+      border:1px solid rgba(120,110,180,.14);
+      font-size:15.5px; line-height:1.55; color:#2c313f;
+    }
+    ol.steps li:last-child{ margin-bottom:0; }
+    /* numbered circle */
+    ol.steps li::before{
+      counter-increment:step; content:counter(step);
+      position:absolute; left:14px; top:13px;
+      width:32px; height:32px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-weight:800; font-size:15px; color:#fff; z-index:2;
+      background:linear-gradient(135deg,#4285F4,#3367d6);
+      box-shadow:0 6px 14px rgba(66,133,244,.32);
+    }
+    /* timeline connector line between circles */
+    ol.steps li::after{
+      content:""; position:absolute;
+      left:29px; top:45px; bottom:-12px; width:2px;
+      background:linear-gradient(180deg, rgba(120,110,180,.35), rgba(120,110,180,.12));
+      z-index:1;
+    }
+    ol.steps li:last-child::after{ display:none; }
+    /* Google-palette colored numbers per step */
+    ol.steps li:nth-child(1)::before{ background:linear-gradient(135deg,#4285F4,#3367d6); box-shadow:0 6px 14px rgba(66,133,244,.34); }
+    ol.steps li:nth-child(2)::before{ background:linear-gradient(135deg,#EA4335,#c5221f); box-shadow:0 6px 14px rgba(234,67,53,.32); }
+    ol.steps li:nth-child(3)::before{ background:linear-gradient(135deg,#FBBC05,#f0a800); color:#5a4300; box-shadow:0 6px 14px rgba(251,188,5,.34); }
+    ol.steps li:nth-child(4)::before{ background:linear-gradient(135deg,#34A853,#1e7d3a); box-shadow:0 6px 14px rgba(52,168,83,.32); }
+    ol.steps li:nth-child(5)::before{ background:linear-gradient(135deg,#9b72cb,#7a53b0); box-shadow:0 6px 14px rgba(155,114,203,.34); }
+    ol.steps li b{ color:#1a2233; }
+    .inline-link{ color:#1a56c4; font-weight:700; text-decoration:none; border-bottom:1px solid rgba(26,86,196,.35); word-break:break-all; }
+    .inline-link:hover{ border-bottom-color:#1a56c4; }
+    .ok-chip{
+      display:inline-block; margin-top:6px;
+      padding:3px 10px; border-radius:999px;
+      background:rgba(52,168,83,.14); color:#1e7d3a;
+      font-size:12.5px; font-weight:700;
+    }
+
+    /* VPN list */
+    ul.vpn{ list-style:none; margin:0; padding:0; }
+    ul.vpn li{
+      position:relative; padding:12px 14px 12px 42px; margin-bottom:10px;
+      border-radius:14px; background:#f6f9ff;
+      border:1px solid rgba(66,133,244,.16);
+      font-size:15.5px; line-height:1.55; color:#2c313f;
+    }
+    ul.vpn li:last-child{ margin-bottom:0; }
+    ul.vpn li::before{
+      content:""; position:absolute; left:15px; top:17px;
+      width:12px; height:12px; border-radius:50%;
+      background:radial-gradient(circle at 30% 30%, #4285F4, #1a56c4);
+      box-shadow:0 0 0 4px rgba(66,133,244,.14);
+    }
+    ul.vpn li.win{ background:rgba(52,168,83,.08); border-color:rgba(52,168,83,.28); }
+    ul.vpn li.win::before{ background:radial-gradient(circle at 30% 30%, #57c877, #1e7d3a); box-shadow:0 0 0 4px rgba(52,168,83,.16); }
+    .ext-name{ font-weight:800; color:#173a86; }
+
+    /* WARNING */
+    .warn{
+      margin-top:20px;
+      border-radius:22px;
+      padding:24px;
+      background:linear-gradient(180deg, rgba(234,67,53,.10), rgba(251,188,5,.08));
+      border:1px solid rgba(234,67,53,.30);
+      box-shadow:0 14px 40px rgba(234,67,53,.12);
+      display:flex; gap:16px; align-items:flex-start;
+    }
+    .warn .wic{
+      flex:0 0 auto;
+      width:46px; height:46px; border-radius:14px;
+      display:flex; align-items:center; justify-content:center;
+      font-size:24px;
+      background:linear-gradient(135deg,#EA4335,#FBBC05);
+      box-shadow:0 8px 20px rgba(234,67,53,.32);
+    }
+    .warn h3{ margin:2px 0 6px; font-size:18px; color:#a5241a; }
+    .warn p{ margin:0; font-size:15.5px; line-height:1.6; color:#5a2a26; }
+    .warn b{ color:#8f1c14; }
+
+    .foot{ text-align:center; margin:26px 6px 0; font-size:13px; color:#5b6070; line-height:1.6; }
+
+    @media (max-width:640px){
+      body{ padding:20px 14px 40px; }
+      .hero{ padding:34px 20px 32px; border-radius:24px; }
+      h1{ font-size:27px; }
+      .lede{ font-size:15.5px; }
+      .cta{ width:100%; justify-content:center; padding:15px 22px; }
+      .card{ padding:22px 16px; border-radius:18px; }
+      .card h2{ font-size:19px; }
+      ol.steps li{ padding:12px 12px 12px 54px; font-size:15px; }
+      ul.vpn li{ font-size:15px; }
+      .warn{ flex-direction:column; padding:20px 16px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="spark">✨</div>
+      <div class="gdots" aria-hidden="true">
+        <i class="d-b"></i><i class="d-r"></i><i class="d-y"></i><i class="d-g"></i>
+      </div>
+      <div class="badge">Google AI PRO · Gemini · Инструкция</div>
+      <h1>Добро пожаловать в Google AI PRO</h1>
+      <p class="lede">Спасибо за покупку! Ниже — понятная пошаговая инструкция по активации и использованию вашей подписки Gemini.</p>
+      <a class="cta" href="https://gemini.google.com/app" target="_blank" rel="noopener">🚀 Открыть <span class="g">Gemini</span></a>
+    </section>
+
+    <!-- SUPPORT NOTICE -->
+    <div class="support">
+      <div class="ic">💬</div>
+      <p><b>Мы всегда на связи.</b> В случае любых вопросов и проблем обращайтесь в техподдержку — и она обязательно вам поможет.</p>
+    </div>
+
+    <!-- ACTIVATION -->
+    <section class="card">
+      <span class="sec-badge sb-activate">✅ Активация подписки</span>
+      <h2>Как активировать Google AI PRO</h2>
+      <p class="hint">Выполните шаги по порядку — это займёт пару минут.</p>
+      <ol class="steps">
+        <li>Сначала <b>войдите в свой аккаунт Google</b> в том браузере, где будете открывать ссылку активации (если вы ещё не вошли в него ранее).</li>
+        <li>Перейдите по <b>ссылке активации</b>, которую вы получили. Вы увидите официальное окно подарочной подписки — можете спокойно изучить его и условия.</li>
+        <li>Если всё устраивает — нажмите кнопку <b>«Активировать»</b>.</li>
+        <li>После активации у вас <b>сразу же появится подписка Google AI PRO</b>.<br><span class="ok-chip">Готово — подписка активна</span></li>
+        <li>Для использования перейдите на сайт <a class="inline-link" href="https://gemini.google.com/app" target="_blank" rel="noopener">gemini.google.com/app</a></li>
+      </ol>
+    </section>
+
+    <!-- VPN -->
+    <section class="card">
+      <span class="sec-badge sb-vpn">🌍 Если не работает в вашей стране</span>
+      <h2>Решение через VPN</h2>
+      <p class="hint">Если Gemini недоступен в вашем регионе — воспользуйтесь этими шагами.</p>
+      <ul class="vpn">
+        <li>Попробуйте включить <b>VPN</b>.</li>
+        <li>Если VPN всё ещё не помогает — <b>смените несколько раз локацию</b> на другую страну, параллельно пробуя обновлять сайт.</li>
+        <li class="win">Если и это не помогает — установите в Google Chrome расширение под названием <span class="ext-name">«ВПН для Gemini»</span> или <span class="ext-name">«VPN for Gemini»</span>. Оно помогает почти всегда! ✅</li>
+      </ul>
+    </section>
+
+    <!-- WARNING -->
+    <section class="warn">
+      <div class="wic">⚠️</div>
+      <div>
+        <h3>Важно: браузер имеет значение</h3>
+        <p>В <b>Яндекс.Браузере Gemini работать не будет</b>, так как этот браузер принадлежит РФ. Используйте <b>Google Chrome</b> (или другой браузер).</p>
+      </div>
+    </section>
+
+    <p class="foot">Эта страница — помощь от продавца и не является официальным сайтом Google.<br>Google, Gemini и Google AI — товарные знаки Google LLC.</p>
+
+  </main>
+</body>
+</html>
