@@ -146,6 +146,22 @@
     .warn p{ margin:0; font-size:15px; line-height:1.6; color:var(--ink-soft); }
     .warn b{ color:var(--ink); font-weight:650; }
 
+    /* review bonus */
+    .gift{ text-align:center; position:relative; overflow:hidden;
+      max-width:600px; margin-left:auto; margin-right:auto;
+      background:linear-gradient(135deg, rgba(79,124,240,.06), rgba(139,111,224,.08) 46%, rgba(224,139,176,.09) 78%, rgba(232,166,58,.09));
+      border-color:rgba(226,160,80,.30); }
+    .gift-badge{ display:inline-flex; align-items:center; gap:7px; margin-bottom:14px;
+      padding:6px 14px; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.3px;
+      color:#b06d16; background:rgba(232,166,58,.14); border:1px solid rgba(232,166,58,.32); }
+    .stars{ font-size:clamp(24px,7vw,30px); letter-spacing:3px; line-height:1; margin-bottom:12px;
+      color:#e6a52e; background:linear-gradient(90deg,#f0b93f,#e2952a);
+      -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+      filter:drop-shadow(0 3px 9px rgba(230,165,46,.30)); }
+    .gift h2{ margin:0 auto 8px; max-width:440px; }
+    .gift p{ margin:0 auto; max-width:470px; font-size:15.5px; line-height:1.6; color:var(--ink-soft); }
+    .gift p b{ color:var(--ink); font-weight:650; }
+
     .foot{ text-align:center; margin:28px 8px 0; font-size:12.5px; color:var(--faint); line-height:1.7; }
 
     @media (max-width:560px){
@@ -201,6 +217,14 @@
         <li><span class="st">Нажмите кнопку <b>«Активировать»</b> — подписка <b>Google AI PRO</b> подключится к вашему аккаунту сразу же.</span><br><span class="ok-chip">● Готово — подписка активна</span></li>
         <li><span class="st">Откройте <a class="inline-link" href="https://gemini.google.com/app" target="_blank" rel="noopener">gemini.google.com/app</a> и пользуйтесь всеми возможностями Gemini.</span></li>
       </ol>
+    </section>
+
+    <!-- REVIEW BONUS -->
+    <section class="card gift rv">
+      <span class="gift-badge">🎁 Подарок за отзыв</span>
+      <div class="stars" aria-hidden="true">★★★★★</div>
+      <h2>Ещё одна подписка — бесплатно</h2>
+      <p>Оставьте отзыв на <b>5 звёзд</b> с парой слов о покупке — и мы пришлём вам <b>ещё одну подарочную ссылку на подписку абсолютно бесплатно!</b></p>
     </section>
 
     <!-- VPN -->
