@@ -4,59 +4,54 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Инструкция Google AI PRO (Gemini)</title>
-  <meta name="description" content="Активация и использование подписки Google AI PRO (Gemini): пошаговая инструкция, решение проблем с доступом, связь с магазином." />
-  <meta name="theme-color" content="#f7f8fc" />
+  <meta name="description" content="Активация и использование Google AI PRO (Gemini): пошаговая инструкция, решение проблем с доступом по регионам, связь с магазином." />
+  <meta name="theme-color" content="#f4f6fb" />
   <style>
     *{ box-sizing:border-box; }
 
     :root{
-      --ink:#1c1e28;
-      --ink-soft:#3a3e4c;
-      --muted:#666c7e;
-      --faint:#9298a8;
+      --ink:#191b24;
+      --ink-soft:#394050;
+      --muted:#5c6270;
+      --faint:#7a8090;
       --line:rgba(22,25,45,.09);
-      --line-2:rgba(22,25,45,.14);
+      --line-2:rgba(22,25,45,.15);
       --card:#ffffff;
-      --bg:#f6f7fb;
+      --bg:#f4f6fb;
 
       --blue:#4f7cf0;
       --violet:#8b6fe0;
-      --rose:#e08bb0;
-      --green:#1f9c55;
-      --grad:linear-gradient(120deg,#4f7cf0 0%,#8b6fe0 52%,#e08bb0 100%);
-      --radius:22px;
+      --rose:#e07098;
+      --green:#1a8048;
+      --gold:#b06d16;
+      --grad:linear-gradient(120deg,#4f7cf0 0%,#8b6fe0 52%,#d2659a 100%);
+      --radius:24px;
     }
 
     html{ scroll-behavior:smooth; }
     body{
       margin:0; min-height:100vh; color:var(--ink); background:var(--bg);
       font-family:"Google Sans Text",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,system-ui,sans-serif;
-      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-      overflow-x:hidden;
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; overflow-x:hidden;
     }
-
-    /* мягкий статичный фон — без фильтров (быстро, без лагов) */
     .bg{ position:fixed; inset:0; z-index:-1; pointer-events:none;
       background:
-        radial-gradient(760px 460px at 12% -8%, rgba(79,124,240,.13), transparent 60%),
-        radial-gradient(680px 440px at 96% -4%, rgba(224,139,176,.13), transparent 58%),
-        radial-gradient(900px 620px at 50% 118%, rgba(139,111,224,.10), transparent 62%),
+        radial-gradient(720px 440px at 8% -6%, rgba(79,124,240,.16), transparent 60%),
+        radial-gradient(680px 440px at 98% -2%, rgba(224,112,152,.14), transparent 58%),
+        radial-gradient(900px 640px at 50% 116%, rgba(139,111,224,.12), transparent 62%),
         var(--bg); }
 
-    .wrap{ width:100%; max-width:680px; margin:0 auto; padding:clamp(30px,7vw,52px) clamp(15px,4vw,22px) 60px; }
-    section[id]{ scroll-margin-top:16px; }
+    .wrap{ width:100%; max-width:660px; margin:0 auto; padding:clamp(28px,7vw,50px) clamp(15px,4vw,22px) 60px; }
+    section[id]{ scroll-margin-top:14px; }
 
-    /* появление при прокрутке (только opacity/transform → без лагов) */
-    .js .rv{ opacity:0; transform:translateY(16px); transition:opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1); }
+    .js .rv{ opacity:0; transform:translateY(18px); transition:opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1); }
     .js .rv.in{ opacity:1; transform:none; }
 
     /* ───────── HERO ───────── */
-    .hero{ text-align:center; padding:clamp(6px,3vw,16px) 6px clamp(6px,2vw,10px); }
-    .spark-wrap{ position:relative; width:84px; height:84px; margin:0 auto 10px; }
-    .spark-glow{ position:absolute; inset:-24%; border-radius:50%;
-      background:radial-gradient(circle, rgba(139,111,224,.28), transparent 62%); }
-    .spark{ position:relative; width:84px; height:84px; display:block;
-      filter:drop-shadow(0 10px 22px rgba(120,110,220,.30)); animation:bob 6s ease-in-out infinite; }
+    .hero{ text-align:center; padding:clamp(4px,2vw,12px) 6px clamp(4px,2vw,8px); }
+    .spark-wrap{ position:relative; width:82px; height:82px; margin:0 auto 12px; }
+    .spark-glow{ position:absolute; inset:-26%; border-radius:50%; background:radial-gradient(circle, rgba(139,111,224,.30), transparent 62%); }
+    .spark{ position:relative; width:82px; height:82px; display:block; filter:drop-shadow(0 10px 22px rgba(120,110,220,.32)); animation:bob 6s ease-in-out infinite; }
     .spark-sm{ position:absolute; width:18px; height:18px; opacity:.9; }
     .spark-sm.s1{ top:-2px; right:2px; animation:tw 3.4s ease-in-out infinite; }
     .spark-sm.s2{ bottom:4px; left:0; width:12px; height:12px; animation:tw 4s ease-in-out .7s infinite; }
@@ -65,171 +60,174 @@
 
     .badge{ display:inline-flex; align-items:center; gap:9px; padding:7px 15px; margin:2px 0 16px;
       border-radius:999px; font-size:12.5px; font-weight:600; letter-spacing:.3px; color:var(--ink-soft);
-      background:#fff; border:1px solid var(--line); box-shadow:0 4px 14px rgba(30,34,60,.05); }
+      background:#fff; border:1px solid var(--line); box-shadow:0 4px 14px rgba(30,34,60,.06); }
     .badge .dots{ display:inline-flex; gap:5px; }
     .badge .dots i{ width:7px; height:7px; border-radius:50%; }
     .badge .dots i:nth-child(1){ background:var(--blue); }
     .badge .dots i:nth-child(2){ background:var(--violet); }
     .badge .dots i:nth-child(3){ background:var(--rose); }
 
-    h1{ margin:0 0 4px; font-size:clamp(27px,7vw,40px); line-height:1.14; font-weight:700; letter-spacing:-.5px; }
+    h1{ margin:0 0 6px; font-size:clamp(28px,7.4vw,42px); line-height:1.1; font-weight:800; letter-spacing:-.7px; }
     h1 .grad{ background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent; }
 
-    /* быстрая навигация-чипы */
-    .nav{ display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-top:20px; }
-    .nav a{ display:inline-flex; align-items:center; gap:6px; padding:9px 14px; border-radius:999px;
-      font-size:13.5px; font-weight:600; color:var(--ink-soft); background:#fff; border:1px solid var(--line);
-      text-decoration:none; box-shadow:0 3px 10px rgba(30,34,60,.05);
-      transition:transform .15s ease, border-color .2s ease, box-shadow .2s ease; }
-    .nav a:hover{ transform:translateY(-1px); border-color:var(--line-2); box-shadow:0 6px 16px rgba(30,34,60,.09); }
-    .nav a.hot{ color:#3a63c9; background:rgba(79,124,240,.08); border-color:rgba(79,124,240,.28); }
+    /* навигация — настоящие кнопки */
+    .nav{ display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:24px; }
+    .nav a{ display:inline-flex; align-items:center; gap:7px; padding:12px 17px; border-radius:14px;
+      font-size:14px; font-weight:700; text-decoration:none; box-shadow:0 5px 14px rgba(30,34,60,.09);
+      transition:transform .14s ease, box-shadow .14s ease, filter .14s ease; }
+    .nav a:hover{ transform:translateY(-2px); box-shadow:0 10px 22px rgba(30,34,60,.15); filter:brightness(1.03); }
+    .nav a:active{ transform:translateY(0) scale(.98); }
+    .nav-green{ background:#e7f6ee; color:#157a41; border:1px solid rgba(26,128,72,.28); }
+    .nav-blue{ background:#e9f0ff; color:#2f57c2; border:1px solid rgba(79,124,240,.30); }
+    .nav-gold{ background:#fbf1dc; color:#9c5f10; border:1px solid rgba(232,166,58,.34); }
+    .nav-hot{ background:var(--grad); color:#fff; border:none; box-shadow:0 8px 20px rgba(120,90,200,.34); }
 
     /* ───────── карточки ───────── */
-    .card{ margin-top:16px; padding:clamp(20px,5vw,28px) clamp(18px,4.5vw,26px);
+    .card{ margin-top:20px; padding:clamp(20px,5vw,28px) clamp(18px,4.5vw,26px);
       background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
-      box-shadow:0 10px 30px rgba(28,32,60,.06), 0 2px 6px rgba(28,32,60,.04);
-      transition:box-shadow .25s ease; }
-    .card:hover{ box-shadow:0 16px 40px rgba(28,32,60,.10); }
+      box-shadow:0 14px 36px rgba(28,32,60,.07), 0 2px 6px rgba(28,32,60,.04);
+      transition:box-shadow .25s ease, transform .25s ease; }
+    .card:hover{ box-shadow:0 20px 48px rgba(28,32,60,.11); }
 
-    .kicker{ display:inline-flex; align-items:center; gap:8px; margin-bottom:12px;
-      padding:6px 13px; border-radius:999px; font-size:12px; font-weight:600; letter-spacing:.2px; }
-    .k-green{ color:#1f9c55; background:rgba(52,168,111,.10); border:1px solid rgba(52,168,111,.22); }
-    .k-blue{ color:#3a63c9; background:rgba(79,124,240,.10); border:1px solid rgba(79,124,240,.22); }
-    .k-info{ color:#5b6480; background:rgba(91,100,128,.09); border:1px solid rgba(91,100,128,.20); }
-    .card h2{ margin:0 0 6px; font-size:clamp(19px,4.8vw,22px); font-weight:650; letter-spacing:-.2px; color:var(--ink); }
-    .card .hint{ margin:0 0 18px; font-size:14px; color:var(--faint); line-height:1.5; }
+    /* заголовок секции с цветной иконкой-плиткой */
+    .sec-head{ display:flex; gap:14px; align-items:center; margin-bottom:18px; }
+    .sec-ic{ flex:0 0 auto; width:48px; height:48px; border-radius:15px; display:grid; place-items:center; font-size:23px; }
+    .ic-green{ background:linear-gradient(135deg, rgba(52,168,111,.20), rgba(52,168,111,.08)); border:1px solid rgba(52,168,111,.26); }
+    .ic-blue{ background:linear-gradient(135deg, rgba(79,124,240,.20), rgba(79,124,240,.08)); border:1px solid rgba(79,124,240,.26); }
+    .ic-indigo{ background:linear-gradient(135deg, rgba(139,111,224,.22), rgba(79,124,240,.10)); border:1px solid rgba(139,111,224,.28); }
+    .ic-rose{ background:linear-gradient(135deg, rgba(224,112,152,.22), rgba(240,196,120,.12)); border:1px solid rgba(224,112,152,.28); }
+    .ic-slate{ background:linear-gradient(135deg, rgba(91,100,128,.16), rgba(91,100,128,.07)); border:1px solid rgba(91,100,128,.22); }
+    .sec-head h2{ margin:0; font-size:clamp(19px,4.7vw,22px); font-weight:750; letter-spacing:-.3px; color:var(--ink); line-height:1.2; }
+    .sec-sub{ margin:3px 0 0; font-size:13px; color:var(--muted); font-weight:500; }
+
     .st{ font-size:15.5px; line-height:1.58; color:var(--ink-soft); }
-    .st b{ color:var(--ink); font-weight:650; }
-    .inline-link{ color:#3a63c9; font-weight:650; text-decoration:none; border-bottom:1px solid rgba(58,99,201,.35); word-break:break-word; }
-    .inline-link:hover{ border-bottom-color:#3a63c9; }
+    .st b{ color:var(--ink); font-weight:700; }
+    .lead{ margin:0 0 16px; font-size:15.5px; line-height:1.6; color:var(--ink-soft); }
+    .lead b{ color:var(--ink); font-weight:700; }
+    .inline-link{ color:#2f57c2; font-weight:700; text-decoration:none; border-bottom:1.5px solid rgba(47,87,194,.4); word-break:break-word; }
+    .inline-link:hover{ border-bottom-color:#2f57c2; }
+    .prereq{ margin:0 0 18px; padding:13px 15px; border-radius:14px; font-size:14px; line-height:1.5;
+      color:var(--ink-soft); background:rgba(79,124,240,.09); border:1px solid rgba(79,124,240,.24); }
+    .prereq b{ color:var(--ink); font-weight:700; }
+    .prereq a{ color:#2f57c2; font-weight:700; text-decoration:none; border-bottom:1.5px solid rgba(47,87,194,.4); }
 
-    /* ───────── степпер активации ───────── */
+    /* ───────── степпер ───────── */
     ol.steps{ list-style:none; margin:0; padding:0; counter-reset:s; }
-    ol.steps li{ position:relative; padding:0 2px 22px 52px; }
+    ol.steps li{ position:relative; padding:0 2px 22px 54px; }
     ol.steps li:last-child{ padding-bottom:0; }
     ol.steps li::before{ counter-increment:s; content:counter(s);
-      position:absolute; left:0; top:-3px; width:36px; height:36px; border-radius:50%;
-      display:grid; place-items:center; font-size:15px; font-weight:700; color:#fff; z-index:2;
-      background:var(--grad); box-shadow:0 6px 14px rgba(103,110,224,.28); }
-    ol.steps li::after{ content:""; position:absolute; left:17.5px; top:36px; bottom:4px; width:2px;
-      background:linear-gradient(180deg, rgba(103,110,224,.30), rgba(103,110,224,.08)); z-index:1; }
+      position:absolute; left:0; top:-4px; width:38px; height:38px; border-radius:12px;
+      display:grid; place-items:center; font-size:16px; font-weight:800; color:#fff; z-index:2;
+      background:var(--grad); box-shadow:0 8px 16px rgba(120,90,200,.30); }
+    ol.steps li::after{ content:""; position:absolute; left:18.5px; top:38px; bottom:2px; width:2px;
+      background:linear-gradient(180deg, rgba(120,90,200,.30), rgba(120,90,200,.06)); z-index:1; }
     ol.steps li:last-child::after{ display:none; }
     .ok-chip{ display:inline-flex; align-items:center; gap:6px; margin-top:10px;
-      padding:5px 12px; border-radius:999px; font-size:12.5px; font-weight:600;
-      color:#1f9c55; background:rgba(52,168,111,.10); border:1px solid rgba(52,168,111,.24); }
+      padding:5px 12px; border-radius:999px; font-size:12.5px; font-weight:700;
+      color:var(--green); background:rgba(52,168,111,.11); border:1px solid rgba(52,168,111,.26); }
 
-    /* CTA */
-    .cta{ display:inline-flex; align-items:center; justify-content:center; gap:9px;
-      padding:15px 30px; border-radius:14px; text-decoration:none; font-weight:600; font-size:16px; color:#fff;
-      position:relative; overflow:hidden; background:var(--grad); background-size:170% 100%;
-      box-shadow:0 12px 30px rgba(103,110,224,.32);
-      transition:transform .18s ease, box-shadow .18s ease, background-position .5s ease; }
-    .cta:hover{ transform:translateY(-2px); background-position:100% 0; box-shadow:0 18px 40px rgba(103,110,224,.42); }
-    .cta:active{ transform:translateY(0); }
-    .cta-under{ text-align:center; margin-top:16px; }
-
-    /* ───────── связь с магазином ───────── */
-    .order-mock{ max-width:320px; margin:4px auto 2px; padding:16px 18px; border-radius:16px;
-      background:#fff; border:1px solid var(--line); box-shadow:0 8px 24px rgba(28,32,60,.07); }
-    .om-row{ display:flex; justify-content:space-between; font-size:14.5px; color:var(--ink-soft); padding:3px 0; }
-    .om-muted{ color:var(--faint); }
-    .om-total{ font-weight:700; color:var(--ink); border-top:1px solid var(--line); margin-top:6px; padding-top:8px; }
-    .om-paid{ font-size:12.5px; color:var(--green); margin:8px 0 12px; }
-    .om-btn{ text-align:center; padding:11px; border-radius:12px; font-weight:650; color:#fff;
-      background:var(--grad); box-shadow:0 8px 18px rgba(103,110,224,.28); position:relative; }
-    .om-btn::after{ content:""; position:absolute; inset:-4px; border-radius:15px;
-      border:2px solid rgba(139,111,224,.55); animation:ring 2.4s ease-out infinite; }
-    @keyframes ring{ 0%{ opacity:.7; transform:scale(1);} 100%{ opacity:0; transform:scale(1.06);} }
-    .mock-cap{ text-align:center; font-size:12.5px; color:var(--faint); margin:6px 0 0; }
+    /* ───────── макет заказа (как на Яндексе) ───────── */
+    .order-mock{ max-width:330px; margin:2px auto 0; }
+    .om-card{ padding:15px 17px; border-radius:16px; background:#f4f5f8; border:1px solid var(--line); }
+    .om-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:14.5px; color:var(--ink); padding:4px 0; }
+    .om-muted{ color:var(--muted); }
+    .om-div{ height:1px; background:var(--line-2); margin:7px 0; }
+    .om-total{ font-weight:700; }
+    .om-sum{ font-size:20px; font-weight:800; }
+    .om-pay{ display:flex; align-items:center; gap:9px; margin-top:6px; }
+    .om-sbp{ width:22px; height:22px; border-radius:6px; flex:0 0 auto;
+      background:conic-gradient(from 30deg,#ea4335,#fbbc05,#34a853,#4285f4,#ea4335); }
+    .om-pay-name{ font-size:13px; font-weight:650; color:var(--ink); line-height:1.15; }
+    .om-paid{ margin-left:auto; font-size:12.5px; color:var(--muted); text-align:right; line-height:1.2; }
+    .om-chatbtn{ position:relative; margin-top:11px; text-align:center; padding:13px; border-radius:13px;
+      font-weight:650; font-size:15px; color:var(--ink); background:#fff; border:1.5px solid var(--line-2);
+      box-shadow:0 3px 10px rgba(28,32,60,.07); }
+    .om-chatbtn::after{ content:""; position:absolute; inset:-3px; border-radius:15px;
+      border:2px solid rgba(139,111,224,.55); animation:ring 2.3s ease-out infinite; }
+    @keyframes ring{ 0%{ opacity:.7; transform:scale(1);} 100%{ opacity:0; transform:scale(1.05);} }
+    .mock-cap{ text-align:center; font-size:13px; color:var(--muted); margin:12px 0 0; }
 
     /* утилита «открыть заказ» */
-    .util{ margin-top:20px; padding:16px; border-radius:16px; background:#f5f7fd; border:1px solid var(--line); }
-    .util-label{ font-size:14px; font-weight:600; color:var(--ink-soft); margin-bottom:10px; }
+    .util{ margin-top:20px; padding:17px; border-radius:16px; background:#eef2fb; border:1px solid rgba(79,124,240,.16); }
+    .util-label{ font-size:14px; font-weight:650; color:var(--ink-soft); margin-bottom:10px; }
     .util-row{ display:flex; gap:9px; }
     .util-input{ flex:1; min-width:0; padding:13px 15px; border-radius:12px; border:1.5px solid var(--line-2);
       background:#fff; font-size:16px; color:var(--ink); outline:none; transition:border-color .18s ease, box-shadow .18s ease; }
-    .util-input:focus{ border-color:var(--blue); box-shadow:0 0 0 4px rgba(79,124,240,.14); }
+    .util-input:focus{ border-color:var(--blue); box-shadow:0 0 0 4px rgba(79,124,240,.16); }
     .util-btn{ flex:0 0 auto; padding:13px 20px; border-radius:12px; border:none; cursor:pointer;
-      font-size:15px; font-weight:650; color:#fff; background:var(--grad);
-      box-shadow:0 8px 18px rgba(103,110,224,.28); transition:transform .15s ease, box-shadow .15s ease; }
-    .util-btn:hover{ transform:translateY(-1px); box-shadow:0 12px 24px rgba(103,110,224,.36); }
+      font-size:15px; font-weight:700; color:#fff; background:var(--grad);
+      box-shadow:0 8px 18px rgba(120,90,200,.30); transition:transform .15s ease, box-shadow .15s ease; }
+    .util-btn:hover{ transform:translateY(-1px); box-shadow:0 12px 24px rgba(120,90,200,.4); }
     .util-btn:active{ transform:translateY(0); }
     .util-msg{ margin-top:12px; font-size:14px; line-height:1.5; padding:11px 13px; border-radius:11px; }
-    .util-err{ color:#b3324a; background:rgba(224,80,110,.09); border:1px solid rgba(224,80,110,.24); }
-    .util-warn{ color:#9a6a12; background:rgba(232,166,58,.11); border:1px solid rgba(232,166,58,.30); }
-    .util-ok{ color:#1f7d43; background:rgba(52,168,111,.10); border:1px solid rgba(52,168,111,.26); }
+    .util-err{ color:#b3283f; background:rgba(224,80,110,.10); border:1px solid rgba(224,80,110,.26); }
+    .util-warn{ color:#95610f; background:rgba(232,166,58,.12); border:1px solid rgba(232,166,58,.32); }
+    .util-ok{ color:#177a40; background:rgba(52,168,111,.11); border:1px solid rgba(52,168,111,.28); }
     .btn-open{ display:inline-flex; align-items:center; justify-content:center; gap:8px; margin-top:12px; width:100%;
       padding:14px 20px; border-radius:12px; text-decoration:none; font-weight:700; font-size:15.5px; color:#fff;
-      background:var(--grad); box-shadow:0 10px 24px rgba(103,110,224,.30); transition:transform .15s ease, box-shadow .15s ease; }
-    .btn-open:hover{ transform:translateY(-2px); box-shadow:0 14px 30px rgba(103,110,224,.4); }
+      background:var(--grad); box-shadow:0 10px 24px rgba(120,90,200,.32); transition:transform .15s ease, box-shadow .15s ease; }
+    .btn-open:hover{ transform:translateY(-2px); box-shadow:0 14px 30px rgba(120,90,200,.44); }
     [hidden]{ display:none !important; }
 
     /* ───────── подарок за отзыв ───────── */
     .gift{ text-align:center; position:relative; overflow:hidden;
-      max-width:600px; margin-left:auto; margin-right:auto; padding-top:18px; padding-bottom:20px;
-      background:linear-gradient(135deg, rgba(79,124,240,.06), rgba(139,111,224,.08) 46%, rgba(224,139,176,.09) 78%, rgba(232,166,58,.09));
+      background:linear-gradient(140deg, #fff 0%, rgba(232,166,58,.10) 55%, rgba(224,112,152,.12) 100%);
       border-color:rgba(226,160,80,.30); }
-    .gift-badge{ display:inline-flex; align-items:center; gap:7px; margin-bottom:9px;
-      padding:6px 14px; border-radius:999px; font-size:12px; font-weight:700; letter-spacing:.3px;
-      color:#b06d16; background:rgba(232,166,58,.14); border:1px solid rgba(232,166,58,.32); }
-    .stars{ font-size:clamp(23px,6.5vw,28px); letter-spacing:3px; line-height:1; margin-bottom:7px;
+    .gift-badge{ display:inline-flex; align-items:center; gap:7px; margin-bottom:10px;
+      padding:6px 14px; border-radius:999px; font-size:12px; font-weight:800; letter-spacing:.3px;
+      color:#a5640f; background:rgba(232,166,58,.16); border:1px solid rgba(232,166,58,.34); }
+    .stars{ font-size:clamp(24px,6.5vw,30px); letter-spacing:4px; line-height:1; margin-bottom:8px;
       color:#e6a52e; background:linear-gradient(90deg,#f0b93f,#e2952a);
       -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
-      filter:drop-shadow(0 3px 9px rgba(230,165,46,.30)); }
-    .gift h2{ margin:0 auto 6px; max-width:440px; }
+      filter:drop-shadow(0 3px 9px rgba(230,165,46,.32)); }
+    .gift h2{ margin:0 auto 8px; max-width:440px; font-size:clamp(20px,5vw,24px); font-weight:800; letter-spacing:-.4px; color:var(--ink); }
     .gift p{ margin:0 auto; max-width:470px; font-size:15.5px; line-height:1.6; color:var(--ink-soft); }
-    .gift p b{ color:var(--ink); font-weight:650; }
+    .gift p b{ color:var(--ink); font-weight:700; }
 
-    /* ───────── решение проблем (VPN / DNS) ───────── */
+    /* ───────── решения (VPN / DNS) ───────── */
     ul.sol{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:11px; }
     ul.sol li{ position:relative; padding:14px 16px 14px 46px; border-radius:14px;
-      background:#fafbff; border:1px solid var(--line); font-size:15px; line-height:1.55; color:var(--ink-soft); }
+      background:#f7f9fc; border:1px solid var(--line); font-size:15px; line-height:1.55; color:var(--ink-soft); }
     ul.sol li::before{ content:""; position:absolute; left:16px; top:19px; width:11px; height:11px; border-radius:50%;
-      background:radial-gradient(circle at 30% 30%, #6f92ea, #3a63c9); box-shadow:0 0 0 4px rgba(79,124,240,.12); }
-    ul.sol li b{ color:var(--ink); font-weight:650; }
-    .sol-hint{ display:block; margin-top:6px; color:var(--faint); font-size:13.5px; line-height:1.5; }
-    .ext-name{ font-weight:650; color:#6a4fc0; }
-    /* DNS — лучшее решение, зелёный акцент; по умолчанию скрыт (десктоп) */
+      background:radial-gradient(circle at 30% 30%, #6f92ea, #3358c4); box-shadow:0 0 0 4px rgba(79,124,240,.12); }
+    ul.sol li b{ color:var(--ink); font-weight:700; }
+    .sol-hint{ display:block; margin-top:7px; color:var(--ink-soft); font-size:14px; line-height:1.55; }
+    .ext-name{ font-weight:700; color:#6a4fc0; }
     .sol-dns{ display:none; background:rgba(52,168,111,.07); border-color:rgba(52,168,111,.28); }
-    .sol-dns::before{ background:radial-gradient(circle at 30% 30%, #57c88a, #1f9c55); box-shadow:0 0 0 4px rgba(52,168,111,.14); }
-    .sol-badge{ display:inline-block; margin-bottom:6px; padding:3px 10px; border-radius:999px;
-      font-size:11.5px; font-weight:700; color:#1f9c55; background:rgba(52,168,111,.12); border:1px solid rgba(52,168,111,.26); }
-    .dns-code{ font-weight:700; color:var(--green); background:rgba(52,168,111,.10);
-      padding:1px 7px; border-radius:6px; }
-    /* на телефоне прячем расширение для Chrome (это десктоп-браузер);
-       DNS-решение (метод только для Android) показываем первым на Android */
-    html.is-android .sol-dns{ display:block; order:-1; }
+    .sol-dns::before{ background:radial-gradient(circle at 30% 30%, #57c88a, #1a8048); box-shadow:0 0 0 4px rgba(52,168,111,.14); }
+    .sol-ios{ display:none; background:rgba(79,124,240,.06); border-color:rgba(79,124,240,.26); }
+    .sol-badge{ display:inline-block; margin-bottom:6px; padding:3px 11px; border-radius:999px;
+      font-size:11.5px; font-weight:800; color:var(--green); background:rgba(52,168,111,.13); border:1px solid rgba(52,168,111,.28); }
+    .sol-ios .sol-badge{ color:#2f57c2; background:rgba(79,124,240,.13); border-color:rgba(79,124,240,.28); }
+    .dns-code{ font-weight:800; color:var(--green); background:rgba(52,168,111,.11); padding:1px 8px; border-radius:6px; }
+    html.is-android .sol-dns{ display:block; }
+    html.is-ios .sol-ios{ display:block; }
     html.is-mobile .sol-ext{ display:none; }
 
     /* ───────── предупреждение ───────── */
-    .warn{ display:flex; gap:14px; align-items:flex-start;
-      background:linear-gradient(180deg, rgba(224,139,176,.09), rgba(240,196,120,.06)); border-color:rgba(224,139,176,.28); }
-    .warn .wic{ flex:0 0 auto; width:42px; height:42px; border-radius:12px; display:grid; place-items:center; font-size:20px;
-      background:linear-gradient(135deg, rgba(224,139,176,.24), rgba(240,196,120,.20)); border:1px solid rgba(224,139,176,.28); }
-    .warn h3{ margin:1px 0 6px; font-size:17px; font-weight:650; color:#b34d7a; }
+    .warn{ background:linear-gradient(180deg, rgba(224,112,152,.08), rgba(240,196,120,.05)); border-color:rgba(224,112,152,.26); }
+    .warn-h{ margin:0; font-size:clamp(18px,4.4vw,20px); font-weight:750; letter-spacing:-.3px; color:#c04a78; line-height:1.2; }
     .warn p{ margin:0; font-size:15px; line-height:1.6; color:var(--ink-soft); }
-    .warn b{ color:var(--ink); font-weight:650; }
+    .warn b{ color:var(--ink); font-weight:700; }
 
     /* ───────── лимиты ───────── */
-    .lim-intro{ margin:0 0 14px; font-size:15.5px; line-height:1.58; color:var(--ink-soft); }
-    .lim-intro b{ color:var(--ink); font-weight:650; }
-    .lim{ list-style:none; margin:0; padding:0; display:grid; gap:9px; }
-    .lim li{ position:relative; padding-left:24px; font-size:15px; line-height:1.5; color:var(--ink-soft); }
-    .lim li::before{ content:""; position:absolute; left:2px; top:7px; width:8px; height:8px; border-radius:50%;
+    .lim{ list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+    .lim li{ position:relative; padding:12px 14px 12px 44px; border-radius:13px; background:#f7f8fb; border:1px solid var(--line);
+      font-size:15px; line-height:1.45; color:var(--ink-soft); }
+    .lim li::before{ content:""; position:absolute; left:15px; top:16px; width:12px; height:12px; border-radius:5px;
       background:linear-gradient(135deg,var(--blue),var(--violet)); }
-    .lim li b{ color:var(--ink); font-weight:650; }
+    .lim li b{ color:var(--ink); font-weight:700; }
     .note{ margin:16px 0 0; padding:14px 16px; border-radius:14px; font-size:14.5px; line-height:1.6;
-      color:var(--ink-soft); background:#f5f7fd; border:1px solid var(--line); }
-    .note b{ color:var(--ink); font-weight:650; }
+      color:var(--ink-soft); background:#f2f5fc; border:1px solid rgba(79,124,240,.16); }
+    .note b{ color:var(--ink); font-weight:700; }
 
-    .foot{ text-align:center; margin:28px 8px 0; font-size:12.5px; color:var(--faint); line-height:1.7; }
+    .foot{ text-align:center; margin:30px 8px 0; font-size:12.5px; color:var(--faint); line-height:1.7; }
 
     @media (max-width:560px){
-      ol.steps li{ padding-left:48px; }
-      .warn{ gap:12px; }
-      .cta{ width:100%; }
+      ol.steps li{ padding-left:50px; }
       .util-row{ flex-direction:column; }
       .util-btn{ width:100%; }
+      .sec-ic{ width:44px; height:44px; font-size:21px; border-radius:13px; }
     }
     @media (prefers-reduced-motion:reduce){
       *{ animation:none !important; scroll-behavior:auto; }
@@ -248,11 +246,11 @@
         <span class="spark-glow"></span>
         <svg class="spark" viewBox="0 0 24 24" aria-hidden="true">
           <defs><linearGradient id="g" x1="0" y1="0" x2="24" y2="24">
-            <stop offset="0" stop-color="#4f7cf0"/><stop offset=".5" stop-color="#8b6fe0"/><stop offset="1" stop-color="#e08bb0"/>
+            <stop offset="0" stop-color="#4f7cf0"/><stop offset=".5" stop-color="#8b6fe0"/><stop offset="1" stop-color="#e07098"/>
           </linearGradient></defs>
           <path d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12Z" fill="url(#g)"/>
         </svg>
-        <svg class="spark-sm s1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12Z" fill="#e08bb0"/></svg>
+        <svg class="spark-sm s1" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12Z" fill="#e07098"/></svg>
         <svg class="spark-sm s2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c1 7 5 11 12 12-7 1-11 5-12 12-1-7-5-11-12-12 7-1 11-5 12-12Z" fill="#8b6fe0"/></svg>
       </div>
 
@@ -260,71 +258,85 @@
       <h1 class="rv">Спасибо за покупку<br><span class="grad">Google AI PRO</span></h1>
 
       <nav class="nav rv" aria-label="Разделы">
-        <a href="#activate">✅ Активация</a>
-        <a href="#contact">💬 Связь с магазином</a>
-        <a class="hot" href="#solutions">🌍 Не работает в вашей стране?</a>
-        <a href="#bonus">🎁 Отзыв = подарок</a>
+        <a class="nav-green" href="#activate">✅ Активация</a>
+        <a class="nav-blue" href="#contact">💬 Связь с магазином</a>
+        <a class="nav-hot" href="#solutions">🌍 Не работает в стране?</a>
+        <a class="nav-gold" href="#bonus">🎁 Отзыв = подарок</a>
       </nav>
     </header>
 
     <!-- АКТИВАЦИЯ -->
     <section id="activate" class="card rv">
-      <span class="kicker k-green">✅ Активация</span>
-      <h2>Как активировать подписку</h2>
-      <p class="hint">Четыре простых шага — всё займёт не больше пары минут.</p>
+      <div class="sec-head">
+        <div class="sec-ic ic-green">✅</div>
+        <div><h2>Как активировать подписку</h2><p class="sec-sub">4 простых шага · пара минут</p></div>
+      </div>
+
+      <p class="prereq">🌍 <b>Если вы в России</b> — Google и Gemini могут не открываться (и ссылка активации тоже). Сначала включите VPN или Частный DNS: см. <a href="#solutions">«Не работает в вашей стране?»</a></p>
+
       <ol class="steps">
-        <li><span class="st"><b>Войдите в свой аккаунт Google</b> в том же браузере, где будете открывать ссылку активации. Если вы уже вошли — просто переходите к следующему шагу.</span></li>
-        <li><span class="st"><b>Откройте ссылку активации</b> из вашего заказа. Появится официальное окно подарочной подписки Google — можете спокойно ознакомиться с ним и условиями.</span></li>
-        <li><span class="st">Нажмите кнопку <b>«Активировать»</b> — подписка <b>Google AI PRO</b> подключится к вашему аккаунту сразу же.</span><br><span class="ok-chip">● Готово — подписка активна</span></li>
+        <li><span class="st"><b>Войдите в аккаунт Google</b> в том браузере, где будете открывать ссылку активации. <b>Не в Яндекс.Браузере</b> — в нём Gemini не работает. Уже вошли — переходите дальше.</span></li>
+        <li><span class="st"><b>Откройте ссылку активации</b> из заказа (она на странице заказа в Яндекс Маркете — там же, где кнопка «Чат с магазином»). Появится официальное окно подарочной подписки Google.</span></li>
+        <li><span class="st">Нажмите <b>«Активировать»</b> — подписка <b>Google AI PRO</b> подключится к аккаунту сразу же.</span><br><span class="ok-chip">● Готово — подписка активна</span></li>
         <li><span class="st">Откройте <a class="inline-link" href="https://gemini.google.com/app" target="_blank" rel="noopener">gemini.google.com/app</a> и пользуйтесь всеми возможностями Gemini.</span></li>
       </ol>
     </section>
 
-    <!-- CTA -->
-    <div class="cta-under rv">
-      <a class="cta" href="https://gemini.google.com/app" target="_blank" rel="noopener">✨ Открыть Gemini</a>
-    </div>
-
     <!-- СВЯЗЬ С МАГАЗИНОМ -->
     <section id="contact" class="card rv">
-      <span class="kicker k-blue">💬 Связь с магазином</span>
-      <h2>Остались вопросы? Напишите нам</h2>
-      <p class="hint">Если что-то не получается или есть любой вопрос — мы обязательно поможем. Связаться с нами можно прямо на странице вашего заказа.</p>
+      <div class="sec-head">
+        <div class="sec-ic ic-blue">💬</div>
+        <div><h2>Связь с магазином</h2><p class="sec-sub">Напишите нам прямо на странице заказа</p></div>
+      </div>
 
-      <p class="st">Откройте страницу заказа — справа, под составом заказа (Итого, способ оплаты, статус «заказ оплачен»), есть кнопка <b>«Чат с магазином»</b>. Нажмите её и напишите нам:</p>
+      <p class="lead">Любой вопрос или что-то не получается — мы поможем. Откройте страницу заказа, пролистайте вниз и нажмите кнопку <b>«Чат с магазином»</b>:</p>
 
       <div class="order-mock" aria-hidden="true">
-        <div class="om-row"><span>1 товар</span><span>500&nbsp;₽</span></div>
-        <div class="om-row om-muted"><span>Выгода</span><span>−480&nbsp;₽</span></div>
-        <div class="om-row om-muted"><span>Доставка</span><span>0&nbsp;₽</span></div>
-        <div class="om-row om-total"><span>Итого</span><span>20&nbsp;₽</span></div>
-        <div class="om-paid">✅ заказ оплачен · Система быстрых платежей</div>
-        <div class="om-btn">💬 Чат с магазином</div>
+        <div class="om-card">
+          <div class="om-row"><span>1 товар · 0 г</span><span>•••&nbsp;₽</span></div>
+          <div class="om-row om-muted"><span>Выгода ⌄</span><span>−•••&nbsp;₽</span></div>
+          <div class="om-row om-muted"><span>Доставка</span><span>0&nbsp;₽</span></div>
+          <div class="om-div"></div>
+          <div class="om-row om-total"><span>Итого</span><span class="om-sum">•••&nbsp;₽</span></div>
+          <div class="om-div"></div>
+          <div class="om-pay">
+            <span class="om-sbp"></span>
+            <span class="om-pay-name">Система быстрых<br>платежей</span>
+            <span class="om-paid">заказ<br>оплачен</span>
+          </div>
+        </div>
+        <div class="om-chatbtn">Чат с магазином</div>
       </div>
-      <p class="mock-cap">Так выглядит блок заказа — жмите «Чат с магазином»</p>
+      <p class="mock-cap">Пример: так выглядит блок заказа — жмите «Чат с магазином»</p>
 
       <div class="util">
         <div class="util-label">Не можете найти заказ? Введите его номер — откроем страницу:</div>
         <div class="util-row">
           <input id="ord" class="util-input" type="text" inputmode="numeric" autocomplete="off"
-                 placeholder="например, 592••••••••" aria-label="Номер заказа">
+                 placeholder="например, 56573929538" aria-label="Номер заказа">
           <button id="ordBtn" class="util-btn" type="button">Открыть заказ</button>
         </div>
-        <div id="ordMsg" class="util-msg" hidden></div>
+        <div id="ordMsg" class="util-msg" role="status" aria-live="polite" aria-atomic="true" hidden></div>
         <a id="ordLink" class="btn-open" target="_blank" rel="noopener" hidden>💬 Открыть страницу заказа →</a>
       </div>
     </section>
 
-    <!-- РЕШЕНИЕ ПРОБЛЕМ / VPN + DNS -->
+    <!-- НЕ РАБОТАЕТ В СТРАНЕ -->
     <section id="solutions" class="card rv">
-      <span class="kicker k-blue">🌍 Доступ по регионам</span>
-      <h2>Не открывается в вашей стране?</h2>
-      <p class="hint">Gemini доступен не во всех регионах. Если видите сообщение о недоступности — попробуйте способы по порядку.</p>
+      <div class="sec-head">
+        <div class="sec-ic ic-indigo">🌍</div>
+        <div><h2>Не работает в вашей стране?</h2><p class="sec-sub">VPN или Частный DNS — способы по порядку</p></div>
+      </div>
+      <p class="lead">Gemini доступен не во всех регионах. Если видите сообщение о недоступности — попробуйте варианты по очереди.</p>
       <ul class="sol">
         <li class="sol-dns">
-          <span class="sol-badge">✅ Самый простой способ для телефона</span>
-          <b>Частный DNS (Private DNS).</b> В настройках телефона пропишите адрес <span class="dns-code">xbox-dns.ru</span> — работает без VPN и расширений.
-          <span class="sol-hint">Android&nbsp;9 и новее: «Настройки» → «Сеть и интернет» / «Подключения» → «Частный DNS» → выберите «Имя хоста провайдера частного DNS» → введите <b>xbox-dns.ru</b> → «Сохранить». Затем обновите страницу Gemini.</span>
+          <span class="sol-badge">✅ Самый простой способ на Android</span>
+          <b>Частный DNS.</b> В настройках телефона пропишите <span class="dns-code">xbox-dns.ru</span> — работает без VPN и расширений.
+          <span class="sol-hint">Android&nbsp;9 и новее: «Настройки» → «Сеть и интернет» / «Подключения» → «Частный DNS» → «Имя хоста провайдера частного DNS» → введите <b>xbox-dns.ru</b> → «Сохранить». Затем обновите страницу Gemini.</span>
+        </li>
+        <li class="sol-ios">
+          <span class="sol-badge">📱 Самый простой способ на iPhone</span>
+          <b>Включите VPN.</b> Установите VPN-приложение из App Store, включите его и обновите Gemini. Не открылось — смените страну VPN (США или Европа).
         </li>
         <li><b>Включите VPN</b> и обновите страницу Gemini.</li>
         <li>Не помогло — <b>несколько раз смените страну в VPN</b> (хорошо подходят США и Европа), каждый раз обновляя сайт.</li>
@@ -336,11 +348,11 @@
 
     <!-- ПРЕДУПРЕЖДЕНИЕ -->
     <section class="card warn rv">
-      <div class="wic">⚠️</div>
-      <div>
-        <h3>Не используйте Яндекс.Браузер</h3>
-        <p>В <b>Яндекс.Браузере Gemini не работает</b> (этот браузер принадлежит РФ). Открывайте инструкцию и сам сервис в <b>Google Chrome</b> — также подойдут Safari, Microsoft Edge или Firefox.</p>
+      <div class="sec-head">
+        <div class="sec-ic ic-rose">⚠️</div>
+        <div><h2 class="warn-h">Не используйте Яндекс.Браузер</h2><p class="sec-sub">В нём Gemini не работает</p></div>
       </div>
+      <p>В <b>Яндекс.Браузере Gemini не работает</b> (этот браузер принадлежит РФ). Открывайте инструкцию и сам сервис в <b>Google Chrome</b> — также подойдут Safari, Microsoft Edge или Firefox.</p>
     </section>
 
     <!-- ПОДАРОК ЗА ОТЗЫВ -->
@@ -353,16 +365,17 @@
 
     <!-- ЛИМИТЫ -->
     <section class="card rv">
-      <span class="kicker k-info">ℹ️ О лимитах</span>
-      <h2>Лимиты Google AI PRO</h2>
-      <p class="hint">Чтобы не было недопониманий — коротко о том, как это устроено.</p>
-      <p class="lim-intro">У подписки есть ограничения на количество запросов — <b>дневные</b> и <b>недельные</b>. Они действуют отдельно для разных типов запросов:</p>
+      <div class="sec-head">
+        <div class="sec-ic ic-slate">ℹ️</div>
+        <div><h2>Лимиты Google AI PRO</h2><p class="sec-sub">Коротко о том, как это устроено</p></div>
+      </div>
+      <p class="lead">У подписки есть ограничения на количество запросов — <b>дневные</b> и <b>недельные</b>. Отдельно для разных типов:</p>
       <ul class="lim">
         <li><b>Текстовые запросы</b> — обычные сообщения в чате.</li>
         <li><b>Генерация изображений</b> — свой отдельный лимит.</li>
-        <li><b>Генерация видео</b> — свой лимит, который обновляется каждый день.</li>
+        <li><b>Генерация видео</b> — свой лимит, обновляется каждый день.</li>
       </ul>
-      <p class="note">Это <b>официальные лимиты Google</b> для подписки Pro. Они <b>одинаковы для всех пользователей</b> и устанавливаются самим Google — <b>от нас они никак не зависят</b>, и наша ссылка активации на них не влияет.</p>
+      <p class="note">Это <b>официальные лимиты Google</b> для подписки Pro. Они <b>одинаковы для всех пользователей</b> и устанавливаются самим Google — <b>от нас они не зависят</b>, и наша ссылка активации на них не влияет.</p>
     </section>
 
     <p class="foot rv">Эта страница — помощь от продавца и не является официальным сайтом Google.<br>Google, Gemini и Google AI — товарные знаки Google LLC.</p>
@@ -371,13 +384,18 @@
   <script>
     document.documentElement.classList.add('js');
 
-    // Телефон? → показываем DNS-решение первым, прячем расширение для Chrome
+    // Определяем платформу: Android → DNS-совет; iPhone/iPad → VPN-совет
     (function(){
       var ua = navigator.userAgent || "";
-      var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua)
+      var isIOS = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+      var isAndroid = /Android/i.test(ua);
+      var isMobile = isAndroid || isIOS
+        || /webOS|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua)
         || (window.matchMedia && window.matchMedia('(pointer:coarse)').matches && window.innerWidth < 900);
-      if (isMobile) document.documentElement.classList.add('is-mobile');
-      if (/Android/i.test(ua)) document.documentElement.classList.add('is-android');
+      var root = document.documentElement;
+      if (isMobile) root.classList.add('is-mobile');
+      if (isAndroid) root.classList.add('is-android');
+      if (isIOS) root.classList.add('is-ios');
     })();
 
     // Появление блоков при прокрутке
@@ -386,11 +404,11 @@
       if(!('IntersectionObserver' in window)){ els.forEach(function(e){ e.classList.add('in'); }); return; }
       var io = new IntersectionObserver(function(entries){
         entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
-      }, { threshold:.12, rootMargin:'0px 0px -6% 0px' });
+      }, { threshold:.10, rootMargin:'0px 0px -5% 0px' });
       els.forEach(function(e){ io.observe(e); });
     })();
 
-    // Утилита «открыть заказ»: валидация ввода → ссылка на страницу заказа
+    // Утилита «открыть заказ»: валидация → ссылка на страницу заказа
     (function(){
       var input = document.getElementById('ord');
       var btn   = document.getElementById('ordBtn');
@@ -401,24 +419,22 @@
       function parse(raw){
         var t = (raw || '').trim();
         if(!t) return { level:'err', msg:'Введите номер заказа — он есть на странице заказа и в уведомлении от Яндекс Маркета.' };
-        // вставили ссылку целиком — достаём номер
-        var um = t.match(/order\/(\d+)/i);
+        var um = t.match(/order\/(\d+)/i);          // вставили ссылку целиком
         if(um) t = um[1];
-        // убираем пробелы и типичные разделители
-        var c = t.replace(/[\s\-–—_.,#№]/g, '');
+        var c = t.replace(/[\s\-–—_.,#№]/g, '');     // убираем пробелы и разделители
         if(!/^\d+$/.test(c))
           return { level:'err', msg:'В номере заказа только цифры — уберите буквы, пробелы и символы.' };
         if(c.length < 5)
           return { level:'err', msg:'Похоже, это не полный номер: в заказе минимум 5 цифр.' };
         if(c.length > 15)
           return { level:'err', msg:'Слишком длинно — в номере максимум 15 цифр. Возможно, скопировалось лишнее.' };
-        var warn = c.indexOf('59') !== 0;   // обычно номер начинается с 59
+        var warn = c.charAt(0) !== '5';              // номер заказа обычно начинается с 5
         return {
           level: warn ? 'warn' : 'ok',
           digits: c,
           msg: warn
-            ? 'Ссылку сделал, но обычно номер заказа начинается с 59 — проверьте, тот ли это номер.'
-            : 'Готово! Открываю страницу заказа — там справа нажмите «Чат с магазином».'
+            ? 'Ссылку сделал, но обычно номер заказа начинается с 5 — проверьте, тот ли это номер.'
+            : 'Готово! Открываю страницу заказа — там пролистайте вниз и нажмите «Чат с магазином».'
         };
       }
 
