@@ -274,7 +274,7 @@
 
       <ol class="steps">
         <li><span class="st"><b>Войдите в аккаунт Google</b> в том браузере, где будете открывать ссылку активации. Если уже вошли — переходите дальше.</span></li>
-        <li><span class="st"><b>Откройте ссылку активации</b> из заказа (она на странице заказа в Яндекс Маркете — там же, где кнопка «Чат с магазином»). Появится официальное окно подарочной подписки Google.</span></li>
+        <li><span class="st"><b>Откройте ссылку активации</b> — вы найдёте её в письме, сразу после этой инструкции. Появится официальное окно подарочной подписки Google.</span></li>
         <li><span class="st">Нажмите <b>«Активировать»</b> — подписка <b>Google AI PRO</b> подключится к аккаунту сразу же.</span><br><span class="ok-chip">● Готово — подписка активна</span></li>
         <li><span class="st">Откройте <a class="inline-link" href="https://gemini.google.com/app" target="_blank" rel="noopener">gemini.google.com/app</a> и пользуйтесь всеми возможностями Gemini.</span></li>
       </ol>
@@ -311,12 +311,12 @@
       <div class="util">
         <div class="util-label">Не можете найти заказ? Введите его номер — откроем страницу:</div>
         <div class="util-row">
-          <input id="ord" class="util-input" type="text" inputmode="numeric" autocomplete="off"
+          <input class="util-input" type="text" inputmode="numeric" autocomplete="off"
                  placeholder="например, 56573929538" aria-label="Номер заказа">
-          <button id="ordBtn" class="util-btn" type="button">Открыть заказ</button>
+          <button class="util-btn" type="button">Открыть заказ</button>
         </div>
-        <div id="ordMsg" class="util-msg" role="status" aria-live="polite" aria-atomic="true" hidden></div>
-        <a id="ordLink" class="btn-open" target="_blank" rel="noopener" hidden>💬 Открыть страницу заказа →</a>
+        <div class="util-msg" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+        <a class="btn-open" target="_blank" rel="noopener" hidden>💬 Открыть страницу заказа →</a>
       </div>
     </section>
 
@@ -377,6 +377,45 @@
       <p class="note">Это <b>официальные лимиты Google</b> для подписки Pro. Они <b>одинаковы для всех пользователей</b> и устанавливаются самим Google — <b>от нас они не зависят</b>, и наша ссылка активации на них не влияет.</p>
     </section>
 
+    <!-- СВЯЗЬ С МАГАЗИНОМ (дубль в самом конце) -->
+    <section class="card rv">
+      <div class="sec-head">
+        <div class="sec-ic ic-blue">💬</div>
+        <div><h2>Связь с магазином</h2><p class="sec-sub">Напишите нам прямо на странице заказа</p></div>
+      </div>
+
+      <p class="lead">Любой вопрос или что-то не получается — мы поможем. Откройте страницу заказа, пролистайте вниз и нажмите кнопку <b>«Чат с магазином»</b>:</p>
+
+      <div class="order-mock" aria-hidden="true">
+        <div class="om-card">
+          <div class="om-row"><span>1 товар · 0 г</span><span>•••&nbsp;₽</span></div>
+          <div class="om-row om-muted"><span>Выгода ⌄</span><span>−•••&nbsp;₽</span></div>
+          <div class="om-row om-muted"><span>Доставка</span><span>0&nbsp;₽</span></div>
+          <div class="om-div"></div>
+          <div class="om-row om-total"><span>Итого</span><span class="om-sum">•••&nbsp;₽</span></div>
+          <div class="om-div"></div>
+          <div class="om-pay">
+            <span class="om-sbp"></span>
+            <span class="om-pay-name">Система быстрых<br>платежей</span>
+            <span class="om-paid">заказ<br>оплачен</span>
+          </div>
+        </div>
+        <div class="om-chatbtn">Чат с магазином</div>
+      </div>
+      <p class="mock-cap">Пример: так выглядит блок заказа — жмите «Чат с магазином»</p>
+
+      <div class="util">
+        <div class="util-label">Не можете найти заказ? Введите его номер — откроем страницу:</div>
+        <div class="util-row">
+          <input class="util-input" type="text" inputmode="numeric" autocomplete="off"
+                 placeholder="например, 56573929538" aria-label="Номер заказа">
+          <button class="util-btn" type="button">Открыть заказ</button>
+        </div>
+        <div class="util-msg" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+        <a class="btn-open" target="_blank" rel="noopener" hidden>💬 Открыть страницу заказа →</a>
+      </div>
+    </section>
+
     <p class="foot rv">Эта страница — помощь от продавца и не является официальным сайтом Google.<br>Google, Gemini и Google AI — товарные знаки Google LLC.</p>
   </main>
 
@@ -407,14 +446,9 @@
       els.forEach(function(e){ io.observe(e); });
     })();
 
-    // Утилита «открыть заказ»: валидация → ссылка на страницу заказа
+    // Утилита «открыть заказ»: валидация → ссылка на страницу заказа.
+    // По классам — чтобы работало сразу для нескольких копий блока на странице.
     (function(){
-      var input = document.getElementById('ord');
-      var btn   = document.getElementById('ordBtn');
-      var msg   = document.getElementById('ordMsg');
-      var link  = document.getElementById('ordLink');
-      if(!input || !btn) return;
-
       function parse(raw){
         var t = (raw || '').trim();
         if(!t) return { level:'err', msg:'Введите номер заказа — он есть на странице заказа и в уведомлении от Яндекс Маркета.' };
@@ -437,19 +471,27 @@
         };
       }
 
-      function run(){
-        var r = parse(input.value);
-        msg.className = 'util-msg util-' + r.level;
-        msg.textContent = r.msg;
-        msg.hidden = false;
-        if(r.level === 'err'){ link.hidden = true; return; }
-        link.href = 'https://market.yandex.ru/my/order/' + r.digits;
-        link.hidden = false;
+      function initUtil(root){
+        var input = root.querySelector('.util-input');
+        var btn   = root.querySelector('.util-btn');
+        var msg   = root.querySelector('.util-msg');
+        var link  = root.querySelector('.btn-open');
+        if(!input || !btn || !msg || !link) return;
+        function run(){
+          var r = parse(input.value);
+          msg.className = 'util-msg util-' + r.level;
+          msg.textContent = r.msg;
+          msg.hidden = false;
+          if(r.level === 'err'){ link.hidden = true; return; }
+          link.href = 'https://market.yandex.ru/my/order/' + r.digits;
+          link.hidden = false;
+        }
+        btn.addEventListener('click', run);
+        input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); run(); } });
+        input.addEventListener('input', function(){ msg.hidden = true; link.hidden = true; });
       }
 
-      btn.addEventListener('click', run);
-      input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); run(); } });
-      input.addEventListener('input', function(){ msg.hidden = true; link.hidden = true; });
+      [].slice.call(document.querySelectorAll('.util')).forEach(initUtil);
     })();
   </script>
 </body>
