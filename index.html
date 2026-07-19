@@ -126,47 +126,6 @@
       padding:5px 12px; border-radius:999px; font-size:12.5px; font-weight:700;
       color:var(--green); background:rgba(52,168,111,.11); border:1px solid rgba(52,168,111,.26); }
 
-    /* ───────── макет заказа (как на Яндексе) ───────── */
-    .order-mock{ max-width:330px; margin:2px auto 0; }
-    .om-card{ padding:15px 17px; border-radius:16px; background:#f4f5f8; border:1px solid var(--line); }
-    .om-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:14.5px; color:var(--ink); padding:4px 0; }
-    .om-muted{ color:var(--muted); }
-    .om-div{ height:1px; background:var(--line-2); margin:7px 0; }
-    .om-total{ font-weight:700; }
-    .om-sum{ font-size:20px; font-weight:800; }
-    .om-pay{ display:flex; align-items:center; gap:9px; margin-top:6px; }
-    .om-sbp{ width:22px; height:22px; border-radius:6px; flex:0 0 auto;
-      background:conic-gradient(from 30deg,#ea4335,#fbbc05,#34a853,#4285f4,#ea4335); }
-    .om-pay-name{ font-size:13px; font-weight:650; color:var(--ink); line-height:1.15; }
-    .om-paid{ margin-left:auto; font-size:12.5px; color:var(--muted); text-align:right; line-height:1.2; }
-    .om-chatbtn{ position:relative; margin-top:11px; text-align:center; padding:13px; border-radius:13px;
-      font-weight:650; font-size:15px; color:var(--ink); background:#fff; border:1.5px solid var(--line-2);
-      box-shadow:0 3px 10px rgba(28,32,60,.07); }
-    .om-chatbtn::after{ content:""; position:absolute; inset:-3px; border-radius:15px;
-      border:2px solid rgba(139,111,224,.55); animation:ring 2.3s ease-out infinite; }
-    @keyframes ring{ 0%{ opacity:.7; transform:scale(1);} 100%{ opacity:0; transform:scale(1.05);} }
-    .mock-cap{ text-align:center; font-size:13px; color:var(--muted); margin:12px 0 0; }
-
-    /* утилита «открыть заказ» */
-    .util{ margin-top:20px; padding:17px; border-radius:16px; background:#eef2fb; border:1px solid rgba(79,124,240,.16); }
-    .util-label{ font-size:14px; font-weight:650; color:var(--ink-soft); margin-bottom:10px; }
-    .util-row{ display:flex; gap:9px; }
-    .util-input{ flex:1; min-width:0; padding:13px 15px; border-radius:12px; border:1.5px solid var(--line-2);
-      background:#fff; font-size:16px; color:var(--ink); outline:none; transition:border-color .18s ease, box-shadow .18s ease; }
-    .util-input:focus{ border-color:var(--blue); box-shadow:0 0 0 4px rgba(79,124,240,.16); }
-    .util-btn{ flex:0 0 auto; padding:13px 20px; border-radius:12px; border:none; cursor:pointer;
-      font-size:15px; font-weight:700; color:#fff; background:var(--grad);
-      box-shadow:0 8px 18px rgba(120,90,200,.30); transition:transform .15s ease, box-shadow .15s ease; }
-    .util-btn:hover{ transform:translateY(-1px); box-shadow:0 12px 24px rgba(120,90,200,.4); }
-    .util-btn:active{ transform:translateY(0); }
-    .util-msg{ margin-top:12px; font-size:14px; line-height:1.5; padding:11px 13px; border-radius:11px; }
-    .util-err{ color:#b3283f; background:rgba(224,80,110,.10); border:1px solid rgba(224,80,110,.26); }
-    .util-warn{ color:#95610f; background:rgba(232,166,58,.12); border:1px solid rgba(232,166,58,.32); }
-    .util-ok{ color:#177a40; background:rgba(52,168,111,.11); border:1px solid rgba(52,168,111,.28); }
-    .btn-open{ display:inline-flex; align-items:center; justify-content:center; gap:8px; margin-top:12px; width:100%;
-      padding:14px 20px; border-radius:12px; text-decoration:none; font-weight:700; font-size:15.5px; color:#fff;
-      background:var(--grad); box-shadow:0 10px 24px rgba(120,90,200,.32); transition:transform .15s ease, box-shadow .15s ease; }
-    .btn-open:hover{ transform:translateY(-2px); box-shadow:0 14px 30px rgba(120,90,200,.44); }
     [hidden]{ display:none !important; }
 
     /* ───────── подарок за отзыв ───────── */
@@ -225,8 +184,6 @@
 
     @media (max-width:560px){
       ol.steps li{ padding-left:50px; }
-      .util-row{ flex-direction:column; }
-      .util-btn{ width:100%; }
       .sec-ic{ width:44px; height:44px; font-size:21px; border-radius:13px; }
     }
     @media (prefers-reduced-motion:reduce){
@@ -288,36 +245,7 @@
         <div><h2>Связь с магазином</h2><p class="sec-sub">Напишите нам прямо на странице заказа</p></div>
       </div>
 
-      <p class="lead">Любой вопрос или что-то не получается — мы поможем. Откройте страницу заказа, пролистайте вниз и нажмите кнопку <b>«Чат с магазином»</b>:</p>
-
-      <div class="order-mock" aria-hidden="true">
-        <div class="om-card">
-          <div class="om-row"><span>1 товар · 0 г</span><span>•••&nbsp;₽</span></div>
-          <div class="om-row om-muted"><span>Выгода ⌄</span><span>−•••&nbsp;₽</span></div>
-          <div class="om-row om-muted"><span>Доставка</span><span>0&nbsp;₽</span></div>
-          <div class="om-div"></div>
-          <div class="om-row om-total"><span>Итого</span><span class="om-sum">•••&nbsp;₽</span></div>
-          <div class="om-div"></div>
-          <div class="om-pay">
-            <span class="om-sbp"></span>
-            <span class="om-pay-name">Система быстрых<br>платежей</span>
-            <span class="om-paid">заказ<br>оплачен</span>
-          </div>
-        </div>
-        <div class="om-chatbtn">Чат с магазином</div>
-      </div>
-      <p class="mock-cap">Пример: так выглядит блок заказа — жмите «Чат с магазином»</p>
-
-      <div class="util">
-        <div class="util-label">Не можете найти заказ? Введите его номер — откроем страницу:</div>
-        <div class="util-row">
-          <input class="util-input" type="text" inputmode="numeric" autocomplete="off"
-                 placeholder="например, 56573929538" aria-label="Номер заказа">
-          <button class="util-btn" type="button">Открыть заказ</button>
-        </div>
-        <div class="util-msg" role="status" aria-live="polite" aria-atomic="true" hidden></div>
-        <a class="btn-open" target="_blank" rel="noopener" hidden>💬 Открыть страницу заказа →</a>
-      </div>
+      <p class="lead">Любой вопрос или что-то не получается — мы поможем.</p>
     </section>
 
     <!-- НЕ РАБОТАЕТ В СТРАНЕ -->
@@ -384,36 +312,7 @@
         <div><h2>Связь с магазином</h2><p class="sec-sub">Напишите нам прямо на странице заказа</p></div>
       </div>
 
-      <p class="lead">Любой вопрос или что-то не получается — мы поможем. Откройте страницу заказа, пролистайте вниз и нажмите кнопку <b>«Чат с магазином»</b>:</p>
-
-      <div class="order-mock" aria-hidden="true">
-        <div class="om-card">
-          <div class="om-row"><span>1 товар · 0 г</span><span>•••&nbsp;₽</span></div>
-          <div class="om-row om-muted"><span>Выгода ⌄</span><span>−•••&nbsp;₽</span></div>
-          <div class="om-row om-muted"><span>Доставка</span><span>0&nbsp;₽</span></div>
-          <div class="om-div"></div>
-          <div class="om-row om-total"><span>Итого</span><span class="om-sum">•••&nbsp;₽</span></div>
-          <div class="om-div"></div>
-          <div class="om-pay">
-            <span class="om-sbp"></span>
-            <span class="om-pay-name">Система быстрых<br>платежей</span>
-            <span class="om-paid">заказ<br>оплачен</span>
-          </div>
-        </div>
-        <div class="om-chatbtn">Чат с магазином</div>
-      </div>
-      <p class="mock-cap">Пример: так выглядит блок заказа — жмите «Чат с магазином»</p>
-
-      <div class="util">
-        <div class="util-label">Не можете найти заказ? Введите его номер — откроем страницу:</div>
-        <div class="util-row">
-          <input class="util-input" type="text" inputmode="numeric" autocomplete="off"
-                 placeholder="например, 56573929538" aria-label="Номер заказа">
-          <button class="util-btn" type="button">Открыть заказ</button>
-        </div>
-        <div class="util-msg" role="status" aria-live="polite" aria-atomic="true" hidden></div>
-        <a class="btn-open" target="_blank" rel="noopener" hidden>💬 Открыть страницу заказа →</a>
-      </div>
+      <p class="lead">Любой вопрос или что-то не получается — мы поможем.</p>
     </section>
 
     <p class="foot rv">Эта страница — помощь от продавца и не является официальным сайтом Google.<br>Google, Gemini и Google AI — товарные знаки Google LLC.</p>
@@ -444,54 +343,6 @@
         entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
       }, { threshold:.10, rootMargin:'0px 0px -5% 0px' });
       els.forEach(function(e){ io.observe(e); });
-    })();
-
-    // Утилита «открыть заказ»: валидация → ссылка на страницу заказа.
-    // По классам — чтобы работало сразу для нескольких копий блока на странице.
-    (function(){
-      function parse(raw){
-        var t = (raw || '').trim();
-        if(!t) return { level:'err', msg:'Введите номер заказа — он есть на странице заказа и в уведомлении от Яндекс Маркета.' };
-        var um = t.match(/order\/(\d+)/i);          // вставили ссылку целиком
-        if(um) t = um[1];
-        var c = t.replace(/[\s\-–—_.,#№]/g, '');     // убираем пробелы и разделители
-        if(!/^\d+$/.test(c))
-          return { level:'err', msg:'В номере заказа только цифры — уберите буквы, пробелы и символы.' };
-        if(c.length < 5)
-          return { level:'err', msg:'Похоже, это не полный номер: в заказе минимум 5 цифр.' };
-        if(c.length > 15)
-          return { level:'err', msg:'Слишком длинно — в номере максимум 15 цифр. Возможно, скопировалось лишнее.' };
-        var warn = c.charAt(0) !== '5';              // номер заказа обычно начинается с 5
-        return {
-          level: warn ? 'warn' : 'ok',
-          digits: c,
-          msg: warn
-            ? 'Ссылку сделал, но обычно номер заказа начинается с 5 — проверьте, тот ли это номер.'
-            : 'Готово! Открываю страницу заказа — там пролистайте вниз и нажмите «Чат с магазином».'
-        };
-      }
-
-      function initUtil(root){
-        var input = root.querySelector('.util-input');
-        var btn   = root.querySelector('.util-btn');
-        var msg   = root.querySelector('.util-msg');
-        var link  = root.querySelector('.btn-open');
-        if(!input || !btn || !msg || !link) return;
-        function run(){
-          var r = parse(input.value);
-          msg.className = 'util-msg util-' + r.level;
-          msg.textContent = r.msg;
-          msg.hidden = false;
-          if(r.level === 'err'){ link.hidden = true; return; }
-          link.href = 'https://market.yandex.ru/my/order/' + r.digits;
-          link.hidden = false;
-        }
-        btn.addEventListener('click', run);
-        input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); run(); } });
-        input.addEventListener('input', function(){ msg.hidden = true; link.hidden = true; });
-      }
-
-      [].slice.call(document.querySelectorAll('.util')).forEach(initUtil);
     })();
   </script>
 </body>
